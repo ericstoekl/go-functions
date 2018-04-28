@@ -14,28 +14,7 @@ func Handle(req []byte) string {
 	var segmenter gse.Segmenter
 	// Loading the default dictionary
 
-	old := os.Stdout // keep backup of the real stdout
-	r, w, _ := os.Pipe()
-	os.Stdout = w
-
 	segmenter.LoadDict("vendor/github.com/go-ego/gse/data/dict/jp/dict.txt")
-
-	outC := make(chan string)
-	// copy the output in a separate goroutine so printing can't block indefinitely
-	go func() {
-		var buf bytes.Buffer
-		io.Copy(&buf, r)
-		outC <- buf.String()
-	}()
-
-	// back to normal state
-	w.Close()
-	os.Stdout = old // restoring the real stdout
-	out := <-outC
-
-	// reading our temp stdout
-	fmt.Println("previous output:")
-	fmt.Print(out)
 
 	// segmenter.LoadDict("your gopath"+"/src/github.com/go-ego/gse/data/dict/dictionary.txt")
 
