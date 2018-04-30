@@ -1,12 +1,9 @@
 package function
 
 import (
-	"bytes"
 	"fmt"
 
 	"github.com/go-ego/gse"
-	"io"
-	"os"
 )
 
 // Handle a serverless request
