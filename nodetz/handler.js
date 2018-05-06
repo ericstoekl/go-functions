@@ -7,13 +7,13 @@ module.exports = (context, callback) => {
     var nowD = new Date(now);
     var thisMoment = moment(nowD);
 
-    console.log(moment.tz.names());
-    /*
     if (context == "list" || context == "ls") {
-        moment.tz.names();
+        var names = moment.tz.names();
+        names.forEach(function(value) {
+            console.log(value);
+        });
     }
     else {
-        console.log(thisMoment.tz(context));
+        console.log(thisMoment.tz(context).format());
     }
-    */
 }
