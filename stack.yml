@@ -3,8 +3,10 @@ provider:
   gateway: http://127.0.0.1:8080
 
 functions:
-  segmenter:
-    lang: go
-    handler: ./segmenter
-    image: ericstoekl/segmenter
+  nodetz:
+    lang: node
+    handler: ./nodetz
+    image: ericstoekl/nodetz
+
+
 
