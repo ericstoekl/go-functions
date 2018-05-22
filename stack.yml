@@ -12,3 +12,8 @@ functions:
     lang: python
     handler: ./pytest1
     image: ericstoekl/pytest1
+
+  gotest:
+    lang: go
+    handler: ./gotest
+    image: ericstoekl/gotest
