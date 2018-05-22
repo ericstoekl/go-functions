@@ -8,5 +8,7 @@ functions:
     handler: ./nodetz
     image: ericstoekl/nodetz
 
-
-
+  pytest1:
+    lang: python
+    handler: ./pytest1
+    image: ericstoekl/pytest1
