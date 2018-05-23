@@ -17,3 +17,8 @@ functions:
     lang: go
     handler: ./gotest
     image: ericstoekl/gotest
+
+  nodetest1:
+    lang: node
+    handler: ./nodetest1
+    image: ericstoekl/nodetest1
