@@ -4,5 +4,5 @@ def handle(req):
         req (str): request body
     """
 
-    print("Hello world")
+    print("Hello Kubernetes folks!")
     return req
