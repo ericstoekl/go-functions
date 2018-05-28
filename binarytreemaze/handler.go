@@ -44,10 +44,10 @@ func putLines(dc *gg.Context, W, H, distance int) {
 }
 
 func buildWalls(dc *gg.Context, W, H, distance int) {
-	drawLine(dc, distance, distance, W + distance, distance)
-	drawLine(dc, distance, distance, distance, H + distance)
-	drawLine(dc, distance, H + distance, W + distance, H + distance)
-	drawLine(dc, W + distance, distance, W + distance, H + distance)
+	drawLine(dc, distance, distance, W+distance, distance)
+	drawLine(dc, distance, distance, distance, H+distance)
+	drawLine(dc, distance, H+distance, W+distance, H+distance)
+	drawLine(dc, W+distance, distance, W+distance, H+distance)
 }
 
 func Handle(req []byte) string {
@@ -57,7 +57,7 @@ func Handle(req []byte) string {
 	const cells = 16
 	distance := W / cells
 
-	dc := gg.NewContext(W + (distance*2), H + (distance * 2))
+	dc := gg.NewContext(W+(distance*2), H+(distance*2))
 	dc.SetRGB(1, 1, 1)
 	dc.Clear()
 	buildWalls(dc, W, H, distance)
@@ -65,5 +65,5 @@ func Handle(req []byte) string {
 
 	pngImg := dc.Image()
 	png.Encode(os.Stdout, pngImg)
+	return ""
 }
-
