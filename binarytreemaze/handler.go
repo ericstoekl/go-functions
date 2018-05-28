@@ -5,12 +5,12 @@ import (
 	"image/png"
 	"math/rand"
 	"os"
+	"strconv"
 	"time"
 )
 
 func drawLine(dc *gg.Context, x1, y1, x2, y2 int) {
 	dc.SetRGBA(0, 0.4, 0.7, 1)
-	dc.SetLineWidth(8.0)
 	dc.DrawLine(float64(x1), float64(y1), float64(x2), float64(y2))
 	dc.Stroke()
 }
@@ -51,13 +51,19 @@ func buildWalls(dc *gg.Context, W, H, distance int) {
 }
 
 func Handle(req []byte) string {
+	strInput := string(req)
+	cells, _ := strconv.Atoi(strInput)
+	if cells == 0 {
+		cells = 16
+	}
+
 	rand.Seed(time.Now().UnixNano())
 	const W = 1024
 	const H = 1024
-	const cells = 16
 	distance := W / cells
 
 	dc := gg.NewContext(W+(distance*2), H+(distance*2))
+	dc.SetLineWidth(5.0)
 	dc.SetRGB(1, 1, 1)
 	dc.Clear()
 	buildWalls(dc, W, H, distance)

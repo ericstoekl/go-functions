@@ -7,3 +7,5 @@ functions:
     lang: go
     handler: ./binarytreemaze
     image: ericstoekl/binarytreemaze
+    environment:
+      write_debug: true
