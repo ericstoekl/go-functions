@@ -3,22 +3,7 @@ provider:
   gateway: http://127.0.0.1:8080
 
 functions:
-  nodetz:
-    lang: node
-    handler: ./nodetz
-    image: ericstoekl/nodetz
-
-  pytest1:
-    lang: python
-    handler: ./pytest1
-    image: ericstoekl/pytest1
-
-  gotest:
+  binarytreemaze:
     lang: go
-    handler: ./gotest
-    image: ericstoekl/gotest
-
-  nodetest1:
-    lang: node
-    handler: ./nodetest1
-    image: ericstoekl/nodetest1
+    handler: ./binarytreemaze
+    image: ericstoekl/binarytreemaze
