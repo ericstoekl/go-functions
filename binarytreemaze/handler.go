@@ -1,9 +1,11 @@
 package function
 
 import (
+	"fmt"
 	"github.com/fogleman/gg"
 	"image/png"
 	"math/rand"
+	"net/url"
 	"os"
 	"strconv"
 	"time"
@@ -51,8 +53,19 @@ func buildWalls(dc *gg.Context, W, H, distance int) {
 }
 
 func Handle(req []byte) string {
-	strInput := string(req)
-	cells, _ := strconv.Atoi(strInput)
+	params := os.Getenv("Http_Query")
+	m, err := url.ParseQuery(params)
+	if err != nil {
+		fmt.Printf("parsequery error: %v\n", err)
+		return fmt.Sprintf("parsequery error: %v\n", err)
+	}
+	cells := 16
+	if len(m["V"]) > 0 {
+		cells, _ = strconv.Atoi(m["V"][0])
+	} else {
+		strInput := string(req)
+		cells, _ = strconv.Atoi(strInput)
+	}
 	if cells == 0 {
 		cells = 16
 	}
